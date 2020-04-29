@@ -1,11 +1,12 @@
-// 🌟🌟🌟 M V P 🌟🌟🌟//
-
+                                            // 🌟🌟🌟 M V P 🌟🌟🌟//
 // 🏡 Task 1: Variables
 /* Create variables for principal, interest rate, and years. Assign them the values 200000, 0.05, and 30 respectively. Create another value called name and give it the value of your own name.
 */
 
-
-
+const principal = 200000;
+const interestRate = 0.05;
+const years = 30 ;
+const Name = 'Shirley';
 
 
 // 🏡 Task 1.5: Simple Math
@@ -15,6 +16,8 @@ Create a variable called `monthlyInterestRate` and give it the value of interest
 
 Create another variable called `periods` and give it the value of years*12.
 */
+let monthlyInterestRate = interestRate/12;
+let periods = 12;
 
 
 
@@ -28,9 +31,14 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 
 When your math is correct, monthlyRate will equal 1073.64
 */
+let numerator = monthlyInterestRate * (Math.pow(( 1 + monthlyInterestRate ),periods));
+let denominator = (Math.pow(( 1 + monthlyInterestRate ),periods)) - 1;
+
+let monthlyRate = principal * (numerator / denominator); 
+let calculator = monthlyRate.toFixed(2);                                        
 
 
-
+console.log(calculator);
 
 // 🏡 Task 3: Function
 /* Create a function called `mortgageCalculator` that combines all of the steps from task 1 and 2 and returns a sentence "{Name}, your monthly rate is ${monthlyRate}"
@@ -39,6 +47,18 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 */
 
 
+function mortgageCalculator(principal, monthlyInterestRate, periods, creditScore) {
+
+    if (creditScore > 740) {
+      let interestRate = interestRate - .05;
+    } else if (ceditScore < 660){
+      let interestRate = interestRate + .05;
+    } else {
+      let interestRate = interestRate;
+    }
+  return (`${name} + ", your monthly rate is ${monthlyRate}`);
+  }  
+  mortgageCalculator(200000, 0.05, 30, 730);
 
 
 
@@ -51,6 +71,17 @@ mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 
 
 
+function variableInterestRate(p, IR, y, n) {
+  interestRate= interestRate + 0.05;
+    return (myName + `with an interest rate of` + interestRate + `your monthly interest rate is` + monthlyRate);
+}
+
+mortgageCalculator(2000000, 0.05, 30);
+console.log(variableInterestRate (200000, 0.05, 30, 750));
+
+for (let i = 0; i< 10; i++) {
+    mortgageCalculator(2000000, 0.05, 30, 750);
+}
 
 
 // 🏡 Task 5: Conditionals
@@ -58,7 +89,34 @@ mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
-
+function mortgageCalculator(Prin, Rate, Year, CredScore) {
+    let P = Prin;
+    let I = Rate;
+    let N = Year;
+    let name = "Shirley";
+    let monthlyInterestRate = I / 12;
+    let periods = N * 12;
+  
+    const numerator =
+      monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
+    const denominator = Math.pow(1 + monthlyInterestRate, periods) - 1;
+  
+    const answer = P * (numerator / denominator);
+  
+    const rounded = Math.round(100 * answer) / 100;
+  
+    if (CredScore > 740) {
+      monthlyInterestRate = monthlyInterestRate + 0.005;
+      console.log(name + ", your monthly rate is " + rounded);
+    } else if (CredScore < 660) {
+      monthlyInterestRate = monthlyInterestRate - 0.005;
+      console.log(name + ", your monthly rate is " + rounded);
+    } else {
+      console.log(name + ", your monthly rate is " + rounded);
+    }
+  }
+  
+  mortgageCalculator(200000, 0.05, 30, 770);
 
 
 
@@ -78,7 +136,27 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
+function mortgageCalculator(name, creditScore, p, iR, y) {
+    let i = iR / 12;
+    let periods = y *12; 
+    let n = periods;
 
+    let numerator = i * Math.pow(1 + i, n);
+    let denominator = Math.pow(1 + i, n);
+    
+    if (creditScore > 740) {
+        iR = iR - .005;
+}   else if (creditScore < 660) {
+    iR = iR + .005;
+} else {
+    iR = iR;
+}
+    return `${name}, your monthly rate is: ${m.toFixed(2)}`;
+}
+
+let rate = mortgageCalculator('Shirley', 500, 200000, 0.05, 30);
+
+console.log(rate);
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
